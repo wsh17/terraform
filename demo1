@@ -1,1 +1,23 @@
+# Basic Terraform configuration using the Openstack provider
+
+
+provider "openstack" {
+     user_name = "demoadmin"
+     tenant_name = "Admin"
+     auth_url = "http://api-demo1.client.metacloud.net:5000/v2.0"
+     password = "xxxxxxxxx"
+}
+
+#
+# Resource - KeyPair
+# Creates a new keypair in our openstack tenant.
+# Will show up in OpenStack as "tf-keypair-1"
+# Can be referenced elsewhere in terraform configuration as "keypair1"
+#
+
+resource "openstack_compute_keypair_v2" "keypair1" {
+    name = "BH-Keypair"
+    region = "RegionOne"
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKwPoEQUWivWa0Tk3NI7aKd3hUovebMCWwyOVrwUCq9433Ratd8ODB4ZRGv1l8eTElQnYfOy82Oga/Cths+NOIPSKKXl/jF9qa/1QkPfxr53rc8l1hEDvKvdMr2Cb0p/nU5kkRV/RbHt3ed7/6/f9cBL9TmkdOiRPwn5rPWlTGws31Lo57JpnjvRpF++23xiN8MLE9RJ6yC4479yF9DO1vI/PNwO8HNKRLCKPjm97I+ozNXs21AD5V9P083PdLZ98Ex9j4JmGXU5hehE5gTfT9RNVLr3pGRpK0bR0/gnDZpRU34RpKTaGR4GUZ+jGXc1y6pvZbBxToehRjVCcVc/It"
+}
 
