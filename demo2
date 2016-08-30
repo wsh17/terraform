@@ -1,0 +1,20 @@
+# Basic Terraform configuration using the Openstack provider
+#
+#
+provider "openstack" {
+     user_name = "demoadmin"
+     tenant_name = "Demo Admin"
+     auth_url = "http://api-demo1.client.metacloud.net:5000/v2.0"
+     password = "MetacloudSE1"
+}
+#
+# Create a VM Instance on Ubuntu 14.04 Image by name
+#
+
+resource "openstack_compute_instance_v2" "instance_1" {
+    region = ""
+    name = "tf_test_1"
+    image_name = "ubuntu-server-14.04"
+    flavor_name = "m1.small"
+    key_pair = "BH-Keypair"
+}
